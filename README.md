@@ -2,20 +2,20 @@ Connections:
 
 ULTRASONIC SENSOR (HC-SR04) to ARDUINO:
 
-VCC to Arduino 5V
-GND to Arduino GND
-Trig to Arduino Digital Pin 9
-Echo to Arduino Digital Pin 10
+1) VCC to Arduino 5V
+2) GND to Arduino GND
+3) Trig to Arduino Digital Pin 9
+4) Echo to Arduino Digital Pin 10
 
 BUZZER CONNECTION to ARDUINO
 
-Positive lead to Arduino Digital Pin 11
-Negative lead to Arduino GND
+1) Positive lead to Arduino Digital Pin 11
+2) Negative lead to Arduino GND
 
 LED CONNECTION to ARDUINO:
 
-Anode (longer leg) to Arduino Digital Pin 12
-Cathode (shorter leg) to a resistor (220Ω or 330Ω) to Arduino GND
+1) Anode (longer leg) to Arduino Digital Pin 12
+2) Cathode (shorter leg) to a resistor (220Ω or 330Ω) to Arduino GND
 
 Explanation:
 
