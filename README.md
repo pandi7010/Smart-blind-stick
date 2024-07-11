@@ -35,3 +35,5 @@ Explanation:
       f) If the distance is greater than the threshold, the buzzer and LED are turned off.
    
 This code will make the buzzer sound and the LED blink when an object is detected within 2 cm of the ultrasonic sensor.
+
+Made by Pandiselvam BE Electronics and communication Engineering , Any querries contact me at pandiselvam1216@gmail.com
