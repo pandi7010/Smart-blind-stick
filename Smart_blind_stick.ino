@@ -1,49 +1,50 @@
 const int trigPin = 9;
 const int echoPin = 10;
-const int buzzerPin = 11;
-const int ledPin = 12;
-const int thresholdDistance = 2; // Distance threshold in centimeters
+const int buzzer = 11;
+const int ledPin = 13;
+
+// Defines variables
+long duration;
+int distance;
+int safetyDistance;
 
 void setup() {
-  pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
-  pinMode(buzzerPin, OUTPUT);
+  pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
+  pinMode(echoPin, INPUT); // Sets the echoPin as an Input
+  pinMode(buzzer, OUTPUT);
   pinMode(ledPin, OUTPUT);
-  Serial.begin(9600);
+  Serial.begin(9600); // Starts the serial communication
 }
 
 void loop() {
-  long duration, distance;
-  
-  // Send a 10us pulse to trigger the sensor
+  // Clears the trigPin
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
+
+  // Sets the trigPin on HIGH state for 10 micro seconds
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
-  
-  // Read the pulse duration from the echo pin
+
+  // Reads the echoPin, returns the sound wave travel time in microseconds
   duration = pulseIn(echoPin, HIGH);
-  
-  // Calculate the distance in centimeters
+
+  // Calculating the distance
   distance = duration * 0.034 / 2;
-  
-  // Print the distance to the serial monitor
-  Serial.print("Distance: ");
-  Serial.print(distance);
-  Serial.println(" cm");
-  
-  // Check if the distance is below the threshold
-  if (distance <= thresholdDistance) {
-    digitalWrite(buzzerPin, HIGH);  // Turn on the buzzer
-    digitalWrite(ledPin, HIGH);     // Turn on the LED
-    delay(100);                     // Wait for 100 milliseconds
-    digitalWrite(ledPin, LOW);      // Turn off the LED
-    delay(100);                     // Wait for 100 milliseconds
+
+  safetyDistance = distance;
+
+  if (safetyDistance <= 10) {
+    digitalWrite(buzzer, HIGH);
+    digitalWrite(ledPin, HIGH);
   } else {
-    digitalWrite(buzzerPin, LOW);   // Turn off the buzzer
-    digitalWrite(ledPin, LOW);      // Ensure the LED is off
+    digitalWrite(buzzer, LOW);
+    digitalWrite(ledPin, LOW);
   }
-  
+
+  // Prints the distance on the Serial Monitor
+  Serial.print("Distance: ");
+  Serial.println(distance);
+
   delay(100); // Short delay before repeating the loop
 }
