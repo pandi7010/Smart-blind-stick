@@ -1,7 +1,7 @@
 const int trigPin = 9;
 const int echoPin = 10;
 const int buzzer = 11;
-const int ledPin = 13;
+const int ledPin = 12;
 
 // Defines variables
 long duration;
